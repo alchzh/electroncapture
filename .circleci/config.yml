@@ -7,7 +7,8 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm run build:linux
-      - run: npm run publish
+      - store_artifacts:
+          path: ~/project/dist      
 orbs:
   node: 'circleci/node@4.0.0'
 version: 2.1
