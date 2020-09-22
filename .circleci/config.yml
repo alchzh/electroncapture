@@ -1,0 +1,17 @@
+jobs:
+  build:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
+      - run: npm run build:linux
+      - run: npm run publish
+orbs:
+  node: 'circleci/node@4.0.0'
+version: 2.1
+workflows:
+  build:
+    jobs:
+      - build
